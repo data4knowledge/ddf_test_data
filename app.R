@@ -63,7 +63,7 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   observeEvent(input$action, {
-    r <- POST("https://byrikz.deta.dev/study/", body = json_data())
+    r <- POST("https://byrikz.deta.dev/study/", body = req(json_data()))
     if (status_code(r) == 200) {
       result <- paste0("Using microservice version: ", toString(content(r)["Version"]))
     } else {
