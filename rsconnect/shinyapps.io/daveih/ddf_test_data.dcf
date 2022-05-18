@@ -5,9 +5,9 @@ account: daveih
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6327680
-bundleId: 5919822
+bundleId: 5919860
 url: https://daveih.shinyapps.io/ddf_test_data/
-when: 1652892343.90674
-lastSyncTime: 1652892343.90675
+when: 1652893086.36289
+lastSyncTime: 1652893086.3629
 asMultiple: FALSE
 asStatic: FALSE

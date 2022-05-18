@@ -9,7 +9,8 @@ ui <- fluidPage(
     
     sidebarPanel(
       #actionButton("action", "Request"),
-      h4(textOutput("version"))
+      h4(textOutput("version")),
+      textOutput("studyList")
     ),
     
     mainPanel(
@@ -82,6 +83,16 @@ server <- function(input, output) {
     paste(version)
   })
   
+  output$studyList <- renderText({
+    r <- GET("https://byrikz.deta.dev/study/")
+    if (status_code(r) == 200) {
+      study_list <- content(r)
+    } else {
+      study_list <- "Error!"
+    }
+    paste(study_list)
+  })
+
   output$study <- renderText("We will put data entry for the Study level items here...")
   output$soa <- renderText("We will put data entry for the SoA items here...")
   output$other <- renderText("We will put all the other items here...")
