@@ -88,7 +88,7 @@ ui <- fluidPage(
 server <- function(input, output) {
 
   observeEvent(input$action, {
-    r <- POST("https://byrikz.deta.dev/study/", body = req(json_data()))
+    r <- POST("https://byrikz.deta.dev/v1/study/", body = req(json_data()))
     if (status_code(r) == 200) {
       result <- paste0("Using microservice version: ", toString(content(r)["Version"]))
     } else {
@@ -100,7 +100,7 @@ server <- function(input, output) {
   output$version <- renderText({
     r <- GET("https://byrikz.deta.dev/")
     if (status_code(r) == 200) {
-      version <- paste0("Using microservice version: ", toString(content(r)["Version"]))
+      version <- paste0("Using microservice version: ", toString(content(r)["version"]))
     } else {
       version <- "Using microservice version: Not running, error!"
     }
@@ -108,7 +108,7 @@ server <- function(input, output) {
   })
   
   output$studyList <- renderText({
-    r <- GET("https://byrikz.deta.dev/study/")
+    r <- GET("https://byrikz.deta.dev/v1/studies/")
     if (status_code(r) == 200) {
       study_list <- content(r)
     } else {
